@@ -19,6 +19,8 @@
 		72919D8F178CFBEE00D7BB1D /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 72919D8E178CFBEE00D7BB1D /* ViewController.m */; };
 		72919D92178CFBEE00D7BB1D /* ViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72919D90178CFBEE00D7BB1D /* ViewController_iPhone.xib */; };
 		72919D95178CFBEE00D7BB1D /* ViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 72919D93178CFBEE00D7BB1D /* ViewController_iPad.xib */; };
+		72919D9D178D09ED00D7BB1D /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72919D9C178D09ED00D7BB1D /* ImageIO.framework */; };
+		72919D9F178D09F300D7BB1D /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72919D9E178D09F300D7BB1D /* AssetsLibrary.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		72919D8E178CFBEE00D7BB1D /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		72919D91178CFBEE00D7BB1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPhone.xib; sourceTree = "<group>"; };
 		72919D94178CFBEE00D7BB1D /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/ViewController_iPad.xib; sourceTree = "<group>"; };
+		72919D9C178D09ED00D7BB1D /* ImageIO.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ImageIO.framework; path = System/Library/Frameworks/ImageIO.framework; sourceTree = SDKROOT; };
+		72919D9E178D09F300D7BB1D /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -46,6 +50,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				72919D9F178D09F300D7BB1D /* AssetsLibrary.framework in Frameworks */,
+				72919D9D178D09ED00D7BB1D /* ImageIO.framework in Frameworks */,
 				72919D76178CFBEE00D7BB1D /* UIKit.framework in Frameworks */,
 				72919D78178CFBEE00D7BB1D /* Foundation.framework in Frameworks */,
 				72919D7A178CFBEE00D7BB1D /* CoreGraphics.framework in Frameworks */,
@@ -75,6 +81,8 @@
 		72919D74178CFBEE00D7BB1D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				72919D9E178D09F300D7BB1D /* AssetsLibrary.framework */,
+				72919D9C178D09ED00D7BB1D /* ImageIO.framework */,
 				72919D75178CFBEE00D7BB1D /* UIKit.framework */,
 				72919D77178CFBEE00D7BB1D /* Foundation.framework */,
 				72919D79178CFBEE00D7BB1D /* CoreGraphics.framework */,
@@ -312,6 +320,7 @@
 				72919D9A178CFBEE00D7BB1D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

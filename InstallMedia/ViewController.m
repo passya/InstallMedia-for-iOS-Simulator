@@ -7,12 +7,15 @@
 //
 
 #import "ViewController.h"
+#import <ImageIO/ImageIO.h>
+#import <AssetsLibrary/AssetsLibrary.h>
 
 @interface ViewController () {
     NSFileManager* _fm;
     NSString* _findPath;
     NSDirectoryEnumerator* _enumrator;
     NSString* _saveFilePath;
+    ALAssetsLibrary *_assetLibrary;
 }
 
 @end
@@ -27,6 +30,7 @@
     _fm = [[NSFileManager alloc] init];
     _findPath = @"/Users/jspark/Pictures";
     _enumrator = [_fm enumeratorAtPath:_findPath];
+    _assetLibrary = [[ALAssetsLibrary alloc] init];
     [self nextSaveMedia];
 }
 
@@ -36,8 +40,21 @@
         NSString* fileExtension = [[_saveFilePath pathExtension] lowercaseString];
         if ([fileExtension isEqualToString:@"jpg"] ||
             [fileExtension isEqualToString:@"png"]) {
-            UIImage* image = [UIImage imageWithContentsOfFile:[_findPath stringByAppendingPathComponent:_saveFilePath]];
-            UIImageWriteToSavedPhotosAlbum(image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+            
+            
+            NSURL* fileUrl = [NSURL fileURLWithPath:[_findPath stringByAppendingPathComponent:_saveFilePath]];
+            CGImageSourceRef imageSourceRef = CGImageSourceCreateWithURL((__bridge CFURLRef)fileUrl, nil);
+            CFDictionaryRef dicMetaDataRef = CGImageSourceCopyPropertiesAtIndex(imageSourceRef, 0, nil);
+            NSDictionary* metaData = CFBridgingRelease(dicMetaDataRef);
+            
+            UIImage* image = [UIImage imageWithContentsOfFile:fileUrl.path];
+            [_assetLibrary writeImageToSavedPhotosAlbum:image.CGImage
+                                         metadata:metaData
+                                  completionBlock:^(NSURL *assetURL, NSError *error) {
+                                      [self didFinishSavingWithError:error];
+                                  }];
+            
+            CFRelease(imageSourceRef);
             return;
         }
         else if ([fileExtension isEqualToString:@"mov"]) {
